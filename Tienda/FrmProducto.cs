@@ -23,7 +23,7 @@ namespace Tienda
         {
             if (FrmBuscarProducto.Id > 0)
             {
-                //mp.Modificar(txtNombre, txtDescripcion, txtPrecio, FrmBuscarProducto.Id);
+                mp.Modificar(txtNombre, txtDescripcion, txtPrecio, FrmBuscarProducto.Id);
             }
             else
             {

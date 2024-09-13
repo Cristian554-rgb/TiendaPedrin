@@ -14,7 +14,7 @@ namespace Manejador
        
         public void Guardar(TextBox Nombre, TextBox Descripcion, TextBox Precio)
         {
-            MessageBox.Show(f.Guardar($"insert into producto (Nombre, Descripcion, Precio) values ('{Nombre.Text}','{Descripcion.Text}',{Precio.Text})"),
+            MessageBox.Show(f.Guardar($"call p_insertarProducto ('{Nombre.Text}','{Descripcion.Text}',{Precio.Text})"),
                 "!Atencion", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         public void Borrar(int Id, string dato)
@@ -23,10 +23,15 @@ namespace Manejador
                 "!Atencion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (rs == DialogResult.Yes)
             {
-                f.Borrar($"delete from producto where Idproducto={Id}");
+                f.Borrar($"call p_eliminarProducto({Id})");
                 MessageBox.Show("Registro Eliminado", "!Atencion", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
             }
+        }
+        public void Modificar(TextBox Nombre, TextBox Descripcion, TextBox Precio, int Id)
+        {
+            MessageBox.Show(f.Modificar($"call p_modificarProducto ({Id}, '{Nombre.Text}', '{Descripcion.Text}', '{Precio.Text}') "),
+                "Atencion!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         DataGridViewButtonColumn Boton(string t, Color co)
