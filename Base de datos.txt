@@ -1,0 +1,51 @@
+CREATE DATABASE Tienda3;
+USE Tienda3; 
+
+
+CREATE TABLE producto(
+Idproducto INT PRIMARY KEY AUTO_INCREMENT,
+Nombre VARCHAR(100),
+Descripcion VARCHAR(100),
+Precio DECIMAL(6,2)
+);
+
+
+
+DELIMITER //
+DROP PROCEDURE if EXISTS p_insertarProducto;
+CREATE PROCEDURE p_insertarProducto (
+ 	IN _Nombre VARCHAR(100),
+ 	IN _Descripcion VARCHAR(100),
+ 	IN _Precio DECIMAL(6,2)
+)
+BEGIN
+	INSERT INTO producto (Nombre, Descripcion, Precio)
+	VALUES (_Nombre, _Descripcion, _Precio);
+END//
+
+DELIMITER //
+CALL p	
+/*Procedimiento para modificar Usuarios*/
+DELIMITER //
+DROP PROCEDURE if EXISTS p_modificarProducto;
+CREATE PROCEDURE p_modificarProducto (
+	IN _Idproducto INT,
+	IN _Nombre VARCHAR(100),
+	IN _Descripcion VARCHAR(100),
+	IN _Precio DECIMAL(6,2))
+BEGIN
+	UPDATE producto
+	SET Nombre = _Nombre, Descripcion = _Descripcion, Precio = _Precio WHERE Idproducto = _Idproducto;
+END //
+DELIMITER ;
+CALL p_modificarProducto(3, 'si es','pollo',10.00);
+
+SELECT * FROM producto;
+/*Procedimiento para Eliminar Usuarios*/
+DELIMITER //	
+CREATE PROCEDURE p_eliminarProducto (
+	IN _Idproducto INT)
+BEGIN
+	DELETE FROM producto WHERE Idproducto = _Idproducto;
+END //
+DELIMITER ;
