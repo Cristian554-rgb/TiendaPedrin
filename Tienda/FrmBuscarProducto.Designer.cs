@@ -56,12 +56,13 @@
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(705, 3);
+            this.btnAgregar.Location = new System.Drawing.Point(705, 12);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(75, 60);
+            this.btnAgregar.Size = new System.Drawing.Size(75, 51);
             this.btnAgregar.TabIndex = 2;
             this.btnAgregar.Text = "+";
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click_1);
             // 
             // dtgvProducto
             // 

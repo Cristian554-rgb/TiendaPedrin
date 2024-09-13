@@ -25,13 +25,13 @@ namespace Tienda
             fila = e.RowIndex; columna = e.ColumnIndex;
             switch (columna)
             {
-                case 6:
+                case 4:
                     {
                         Id = int.Parse(dtgvProducto.Rows[fila].Cells[0].Value.ToString());
-                        //mp.Borrar(Id, dtgvUsuarios.Rows[fila].Cells[1].Value.ToString()); dtgvUsuarios.Visible = false;
+                        mp.Borrar(Id, dtgvProducto.Rows[fila].Cells[1].Value.ToString()); dtgvProducto.Visible = false;
                     }
                     break;
-                case 7:
+                case 5:
                     {
                         Id = int.Parse(dtgvProducto.Rows[fila].Cells[0].Value.ToString());
                         Nombre = dtgvProducto.Rows[fila].Cells[1].Value.ToString();
@@ -48,6 +48,15 @@ namespace Tienda
             }
 
         }
+
+        private void btnAgregar_Click_1(object sender, EventArgs e)
+        {
+            Id = 0; Nombre = ""; Descripcion = ""; Precio = "";
+            FrmProducto fu = new FrmProducto();
+            fu.ShowDialog();
+            txtNombre.Focus();
+        }
+
         private void txtNombre_TextChanged(object sender, EventArgs e)
         {
             dtgvProducto.Visible = true;
@@ -60,12 +69,6 @@ namespace Tienda
               
         }
 
-        private void btnAgregar_Click(object sender, EventArgs e)
-        {
-            Id = 0; Nombre = ""; Descripcion = ""; Precio = "";
-            FrmProducto fu = new FrmProducto();
-            fu.ShowDialog();
-            txtNombre.Focus();
-        }
+       
     }
 }

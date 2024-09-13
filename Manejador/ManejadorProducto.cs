@@ -17,7 +17,18 @@ namespace Manejador
             MessageBox.Show(f.Guardar($"insert into producto (Nombre, Descripcion, Precio) values ('{Nombre.Text}','{Descripcion.Text}',{Precio.Text})"),
                 "!Atencion", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-       
+        public void Borrar(int Id, string dato)
+        {
+            DialogResult rs = MessageBox.Show($"estas seguro de borrar {dato}",
+                "!Atencion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (rs == DialogResult.Yes)
+            {
+                f.Borrar($"delete from producto where Idproducto={Id}");
+                MessageBox.Show("Registro Eliminado", "!Atencion", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
+        }
+
         DataGridViewButtonColumn Boton(string t, Color co)
         {
             DataGridViewButtonColumn bo = new DataGridViewButtonColumn();
